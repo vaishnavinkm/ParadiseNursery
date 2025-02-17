@@ -260,7 +260,6 @@ const handlePlantsClick = (e) => {
      [product.name]: true, // Set the product name as key and value as true to indicate it's added to cart
    }));
 };
-
     return (
         <div>
              <div className="navbar" style={styleObj}>
@@ -292,7 +291,11 @@ const handlePlantsClick = (e) => {
                 <img className="product-image" src={plant.image} alt={plant.name} />
                 <div className="product-title">{plant.name}</div>
                 {/*Similarly like the above plant.name show other details like description and cost*/}
-                <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                {cart.items.some(item => item.name === plant.name) ? (
+                    <button className="product-button added-to-cart">Added to Cart</button>
+                ) : (
+                      <button className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                    )}
             </div>
             ))}
         </div>
