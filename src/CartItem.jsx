@@ -7,13 +7,21 @@ const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
 
+  const parseItemCostToInteger = (itemCost) => {
+        /*
+            Remove currency symbol before multiplication.
+            Otherwise, NaN returned.
+            Improve in future: Use regex to remove all possible currency symbols?
+        */
+        return parseInt(itemCost.replace('$', ''), 10);
+  }
+
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
     let totalCost = 0;
-    cart.forEach((item) => {
-      const quantity = item.quantity;
-      const cost = parseFloat(item.cost.substring(1)); // Removes '$' and converts to a number
-      totalCost += quantity * cost;
+        cart.forEach((item) => {
+            const itemCost = parseItemCostToInteger(item.cost);
+            totalCost += itemCost * item.quantity;
     });
     return totalCost;
   };
@@ -23,7 +31,7 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleCheckoutShopping = (e) => {
-    alert('Functionality to be added for future reference');
+    alert('Coming soon!');
   };
 
   const handleIncrement = (item) => { 
@@ -44,8 +52,11 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => { 
-    const itemCost = parseFloat(item.cost.substring(1)); // Extract number from '$12' or similar string
-    return item.quantity * itemCost;
+     let totalCost = 0;
+        const itemCost = parseItemCostToInteger(item.cost);
+        totalCost = item.quantity * itemCost;
+
+        return totalCost;
   };
 
   return (
@@ -73,12 +84,11 @@ const CartItem = ({ onContinueShopping }) => {
       <div className="continue_shopping_btn">
         <button className="get-started-button" onClick={(e) => handleContinueShopping(e)}>Continue Shopping</button>
         <br />
-        <button className="get-started-button1" onClick={(e) => handleCheckoutShopping}>Checkout</button>
+        <button className="get-started-button1" onClick={(e) => handleCheckoutShopping(e)}>Checkout</button>
       </div>
     </div>
   );
 };
 
 export default CartItem;
-
 
