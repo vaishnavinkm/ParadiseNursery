@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';  // Import React Router components
 import ProductList from './ProductList';
 import './App.css';
 import AboutUs from './AboutUs';
@@ -12,7 +13,8 @@ function App() {
     setShowProductList(true);
   };
 
-  return (
+  return ( 
+<Router> {/* Wraping the entire app in Router */}
     <div className="app-container">
       <div className={`landing-page ${showProductList ? 'fade-out' : ''}`}>
         <div className="background-image"></div>
@@ -21,7 +23,10 @@ function App() {
          <h1>Welcome To Paradise Nursery</h1>
           <div className="divider"></div>
           <p>Where Green Meets Serenity</p>
-         
+
+          {/* Clickable company name */}
+              <Link to="/" className="Paradise-Nursery">Paradise Nursery</Link>  {/* This is now a clickable link */}
+
           <button className="get-started-button" onClick={handleGetStartedClick}>
             Get Started
           </button>
@@ -36,6 +41,14 @@ function App() {
         <ProductList />
       </div>
     </div>
+
+    {/* Defining Routes */}
+      <Routes>
+        <Route path="/" element={<div> {/*landing page content */} </div>} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/product-list" element={<ProductList />} />
+      </Routes>
+    </Router>
   );
 }
 
