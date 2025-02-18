@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';  // Import React Router components
 import ProductList from './ProductList';
 import './App.css';
 import AboutUs from './AboutUs';
@@ -14,7 +13,6 @@ function App() {
   };
 
   return ( 
-<Router> {/* Wraping the entire app in Router */}
     <div className="app-container">
       <div className={`landing-page ${showProductList ? 'fade-out' : ''}`}>
         <div className="background-image"></div>
@@ -23,7 +21,6 @@ function App() {
          <h1>Welcome To Paradise Nursery</h1>
           <div className="divider"></div>
           <p>Where Green Meets Serenity</p>
-
 
           <button className="get-started-button" onClick={handleGetStartedClick}>
             Get Started
@@ -40,13 +37,6 @@ function App() {
       </div>
     </div>
 
-    {/* Defining Routes */}
-      <Routes>
-        <Route path="/" element={<div> {/*landing page content */} </div>} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/product-list" element={<ProductList />} />
-      </Routes>
-    </Router>
   );
 }
 
