@@ -3,8 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://vaishnavinkm.github.io/ParadiseNursery",
-  "scripts": {
+  
+   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
