@@ -24,8 +24,6 @@ function App() {
           <div className="divider"></div>
           <p>Where Green Meets Serenity</p>
 
-          {/* Clickable company name */}
-              <Link to="/" className="Paradise-Nursery">Paradise Nursery</Link>  {/* This is now a clickable link */}
 
           <button className="get-started-button" onClick={handleGetStartedClick}>
             Get Started
