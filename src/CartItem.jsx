@@ -14,7 +14,7 @@ const CartItem = ({ onContinueShopping }) => {
             Improve in future: Use regex to remove all possible currency symbols?
         */
         return parseInt(itemCost.replace('$', ''), 10);
-  }
+  };
 
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
