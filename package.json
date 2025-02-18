@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   
-   "scripts": {
+  "homepage": "https://vaishnavinkm.github.io/ParadiseNursery",
+
+  "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
